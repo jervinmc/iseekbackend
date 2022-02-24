@@ -12,6 +12,11 @@ class MostSearchView(viewsets.ModelViewSet):
     serializer_class=MostSearchSerializer
     def create(self,request):
         res = request.data
+        print(res)
+        print(res.get('search_job')=='')
+        if(res.get('search_job')=='' and res.get('search_location')==''):
+            print("okay")
+            return Response(status=status.HTTP_200_OK)
         items = MostSearch.objects.filter(search_location=res.get('search_location'),search_job=res.get('search_job')).count()
         if(items>0):
             items = MostSearch.objects.filter(search_location=res.get('search_location'),search_job=res.get('search_job')).update(quantity=F('quantity')+1)

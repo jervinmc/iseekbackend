@@ -10,7 +10,7 @@ from users.views import Login
 urlpatterns = [
     path('api/v1/admin/', admin.site.urls),
     path('api/v1/getdata/<str:latitude>/<str:longitude>', RecommendedItems.as_view(), name='Sign up'),
-    path('api/v1/search/<str:cityName>/<str:searchvalue>', getSearchedJob.as_view(), name='Sign up'),
+    path('api/v1/search/<str:cityName>/<str:searchvalue>/<str:salaryFrom>/<str:salaryTo>/', getSearchedJob.as_view(), name='Sign up'),
     path('api/v1/inquire', Inquire.as_view(), name='Sign up'),
     path('api/v1/mostsearch/', include('most_search.urls')),
     path('api/v1/login/', Login.as_view(), name='get_user'),
